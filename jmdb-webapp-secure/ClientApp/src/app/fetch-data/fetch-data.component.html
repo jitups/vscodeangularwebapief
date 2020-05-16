@@ -1,24 +1,20 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Movies</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Trending movies...</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!movies"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>Id</th>
+      <th>Movie Name</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
+    <tr *ngFor="let movie of movies">
+      <td>{{ movie.id }}</td>
+      <td>{{ movie.name }}</td>
     </tr>
   </tbody>
 </table>
