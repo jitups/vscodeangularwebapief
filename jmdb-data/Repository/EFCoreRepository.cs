@@ -40,7 +40,7 @@ namespace jmdb_data.Repository
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public async Task<List<TEntity>> GetAll()
+        public async Task<IEnumerable<TEntity>> GetAll()
         {
             return await context.Set<TEntity>().ToListAsync();
         }

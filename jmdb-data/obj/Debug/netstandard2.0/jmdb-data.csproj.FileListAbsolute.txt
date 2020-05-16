@@ -1,9 +1,9 @@
 D:\Code\vscode\angular_dotnetcore\jmdb-data\bin\Debug\netstandard2.0\jmdb-data.deps.json
 D:\Code\vscode\angular_dotnetcore\jmdb-data\bin\Debug\netstandard2.0\jmdb-data.dll
 D:\Code\vscode\angular_dotnetcore\jmdb-data\bin\Debug\netstandard2.0\jmdb-data.pdb
-D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.csprojAssemblyReference.cache
 D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.csproj.CoreCompileInputs.cache
 D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.AssemblyInfoInputs.cache
 D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.AssemblyInfo.cs
 D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.dll
 D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.pdb
+D:\Code\vscode\angular_dotnetcore\jmdb-data\obj\Debug\netstandard2.0\jmdb-data.csprojAssemblyReference.cache

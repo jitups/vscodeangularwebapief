@@ -15,7 +15,8 @@ namespace jmdb_data
 
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : class, IEntity
         {
-            return this.Set<TEntity>();
+            var returnValue = base.Set<TEntity>();
+            return returnValue;
         }
 
         public Task<int> SaveChangesAsync()
