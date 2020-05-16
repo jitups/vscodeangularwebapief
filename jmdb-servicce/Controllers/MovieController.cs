@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using jmdb_data;
 using jmdb_data.Model;
 using jmdb_data.Repository;
@@ -13,19 +12,19 @@ namespace jmdb_servicce.Controllers
     public class MovieController
     {
         private readonly ILogger<Movie> _logger;
+        private readonly JMDBContext _jMDBContext;
 
         private readonly MovieRepository _movieRepository;
 
-        public MovieController(ILogger<Movie> logger, MovieRepository movieRepository)
+        public MovieController(ILogger<Movie> logger, JMDBContext jMDBContext)
         {
             _logger = logger;
-            _movieRepository = movieRepository;
+            _jMDBContext = jMDBContext;
         }
-
         [HttpGet]
-        public async Task<IEnumerable<Movie>> Get()
+        public IEnumerable<Movie> Get()
         {
-            return await _movieRepository.GetAll();
+            return _jMDBContext.Movies;
         }
 
     }
