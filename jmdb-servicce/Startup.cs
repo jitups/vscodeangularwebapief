@@ -35,7 +35,8 @@ namespace jmdb_servicce
                                   builder =>
                                   {
                                       builder.AllowAnyOrigin() //WithOrigins("https://localhost:44309")
-                                            .AllowAnyMethod();
+                                            .AllowAnyMethod()
+                                            .AllowAnyHeader();
                                   });
             });
 

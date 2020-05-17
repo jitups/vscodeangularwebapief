@@ -20,10 +20,17 @@ namespace jmdb_servicce.Controllers
             _logger = logger;
             _movieRepository = movieRepository;
         }
+        
         [HttpGet]
         public async Task<IEnumerable<Movie>> Get()
         {
             return await _movieRepository.GetAll();
+        }
+
+        [HttpPost]
+        public async Task<Movie> Post(Movie movie)
+        {
+            return await _movieRepository.Add(movie);
         }
         
     }

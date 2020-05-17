@@ -2,6 +2,9 @@ using jmdb_data.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Linq.Expressions;
+using System;
 
 namespace jmdb_data.Repository
 {
@@ -43,6 +46,12 @@ namespace jmdb_data.Repository
         public async Task<IEnumerable<TEntity>> GetAll()
         {
             return await context.Set<TEntity>().ToListAsync();
+        }
+
+        
+        public async Task<IEnumerable<TEntity>> GetByCondition(Expression<Func<TEntity, bool>> expression)
+        {
+            return await context.Set<TEntity>().Where(expression).ToListAsync();
         }
 
         public async Task<TEntity> Update(TEntity entity)
