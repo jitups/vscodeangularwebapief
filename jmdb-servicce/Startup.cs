@@ -42,9 +42,9 @@ namespace jmdb_servicce
 
             services.AddControllers();
             services.AddDbContext<JMDBContext>
-                (item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
-
-            
+                //(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
+                (item => item.UseSqlServer(Configuration["ConnectionStrings:myconn"]));
+  
             services.AddScoped<MovieRepository>();
         }
 
