@@ -11,7 +11,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/jmdb-servicce/bin/Debug/netcoreapp3.1/jmdb-servicce.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/jmdb-servicce",
+            "cwd": "${workspaceFolder}/jmdb-servicce    ",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
@@ -49,13 +49,14 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/jmdb-webapp-secure/bin/Debug/netcoreapp3.1/jmdb-webapp-secure.dll",
             "args": [],
             "cwd": "${workspaceFolder}/jmdb-webapp-secure",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": false
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -65,10 +66,17 @@
             }
         },
         {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome",
+            "url": "https://localhost:5005",
+            "webRoot": "${workspaceFolder}/jmdb-webapp-secure/ClientApp"
         }
-    ]
+    ],
+    "compounds": [
+        {
+            "name": "Full stack",
+            "configurations": ["web", "Chrome"]
+        }
+    ]    
 }
