@@ -9,7 +9,7 @@ import { MovieModel } from '../models/movie-model';
 })
 export class MovieServiceService {
   private webApiControllerName='Movie';
-  public movieRefresh = new BehaviorSubject<boolean>(null);
+  public movieListUpdated$ = new BehaviorSubject<boolean>(null);
   public movieSelected$ = new BehaviorSubject<MovieModel>(null);
 
   constructor(private httpClient:HttpClient) { }

@@ -35,13 +35,13 @@ export class AddMovieComponent implements OnInit, OnDestroy {
     if(movieData.id===0){
       this.movieService.addMovie(movieData).subscribe(movie => {
         console.log('Added movie: ', movie);
-        this.movieService.movieRefresh.next(true);
+        this.movieService.movieListUpdated$.next(true);
       });
     }
     else{
       this.movieService.updateMovie(movieData).subscribe(movie => {
         console.log('updated movie: ', movie);
-        this.movieService.movieRefresh.next(true);
+        this.movieService.movieListUpdated$.next(true);
       });
     }
     

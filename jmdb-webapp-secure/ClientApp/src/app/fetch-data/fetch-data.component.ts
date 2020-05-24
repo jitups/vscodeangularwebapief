@@ -19,7 +19,7 @@ export class FetchDataComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.getMovies();
-    this.subscriptions.push(this.movieService.movieRefresh.subscribe(isRefresh => {
+    this.subscriptions.push(this.movieService.movieListUpdated$.subscribe(isRefresh => {
       if (isRefresh) {
         this.getMovies()
       }

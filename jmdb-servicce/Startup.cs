@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using jmdb_data;
 using Microsoft.EntityFrameworkCore;
 using jmdb_data.Repository;
+using jmdb_data.Model;
 
 namespace jmdb_servicce
 {
@@ -45,7 +46,8 @@ namespace jmdb_servicce
                 //(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
                 (item => item.UseSqlServer(Configuration["ConnectionStrings:myconn"]));
   
-            services.AddScoped<MovieRepository>();
+            services.AddTransient<IRepository<Movie>,MovieRepository>();
+            //services.AddScoped<MovieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,9 +13,9 @@ namespace jmdb_servicce.Controllers
     public class MovieController
     {
         private readonly ILogger<Movie> _logger;
-        private readonly MovieRepository _movieRepository;
+        private readonly IRepository<Movie> _movieRepository;
 
-        public MovieController(ILogger<Movie> logger, MovieRepository movieRepository)
+        public MovieController(ILogger<Movie> logger, IRepository<Movie> movieRepository)
         {
             _logger = logger;
             _movieRepository = movieRepository;
