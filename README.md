@@ -16,3 +16,10 @@ git push -f origin master
 
 
 login: admin@admin.com / Test@123
+
+To remove unwanted file folder from git repository
+first configure them to .gitgnore file
+then use following command to untrack them from repository
+git rm -r --cached ./node_modules 
+git rm -r --cached *.cache
+git rm -r --cached ./obj 
