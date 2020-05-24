@@ -32,6 +32,12 @@ namespace jmdb_servicce.Controllers
         {
             return await _movieRepository.Add(movie);
         }
+
+        [HttpPut]
+        public async Task<Movie> Put(Movie movie)
+        {
+            return await _movieRepository.Update(movie);
+        }
         
     }
 }

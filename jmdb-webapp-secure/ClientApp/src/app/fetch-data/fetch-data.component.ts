@@ -34,4 +34,8 @@ export class FetchDataComponent implements OnInit,OnDestroy {
       this.movies = movies;
     });
   }
+
+  displayRow(movie:any){
+    this.movieService.movieSelected$.next(movie);
+  }
 }

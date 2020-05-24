@@ -10,6 +10,7 @@ import { MovieModel } from '../models/movie-model';
 export class MovieServiceService {
   private webApiControllerName='Movie';
   public movieRefresh = new BehaviorSubject<boolean>(null);
+  public movieSelected$ = new BehaviorSubject<MovieModel>(null);
 
   constructor(private httpClient:HttpClient) { }
 
@@ -19,5 +20,9 @@ export class MovieServiceService {
 
   addMovie(movie:MovieModel):Observable<MovieModel>{
     return this.httpClient.post<MovieModel>(environment.api_endpoint + this.webApiControllerName,movie);
+  }
+
+  updateMovie(movie:MovieModel):Observable<MovieModel>{
+    return this.httpClient.put<MovieModel>(environment.api_endpoint + this.webApiControllerName,movie);
   }
 }

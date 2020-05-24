@@ -1,13 +1,13 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
 
-    <div>
+    <div  class="form-group">
         <label for="name">
           Name
         </label>
-        <input id="name" type="text" formControlName="name"/>
+        <input class="form-control" id="name" type="text" formControlName="name"/>
+        <input class="form-control" id="id" type="hidden" formControlName="id"/>
       </div>
-
       
-    <button class="button" type="submit" [disabled]="!checkoutForm.valid">Add</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">Add</button>
   
   </form>
