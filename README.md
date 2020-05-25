@@ -7,6 +7,7 @@ How repository created from command line
 
 created repostiroty on github.com with name vscodeangularwebapief
 
+git init
 git add .
 git commit -am "first changes"
 git config --global user.name "jitups"
