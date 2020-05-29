@@ -22,4 +22,12 @@ first configure them to .gitgnore file
 then use following command to untrack them from repository
 git rm -r --cached ./node_modules 
 git rm -r --cached *.cache
-git rm -r --cached ./obj 
+git rm -r --cached ./obj
+
+to add migrations and to update database mentioning the startup project
+dotnet ef migrations add RatingColumn -s ..\jmdb-servicce\jmdb-servicce.csproj
+dotnet ef database update -s ..\jmdb-servicce\jmdb-servicce.csproj
+
+start rating documentation
+https://ng-bootstrap.github.io/#/components/rating/examples
+https://stackblitz.com/run?file=src%2Fapp%2Frating-form.ts

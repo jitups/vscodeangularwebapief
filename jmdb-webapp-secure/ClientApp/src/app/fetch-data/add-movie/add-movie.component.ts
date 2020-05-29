@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { MovieModel } from 'src/app/models/movie-model';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { Subscription } from 'rxjs';
-import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-add-movie',
@@ -12,33 +11,28 @@ import { StarRatingComponent } from 'ng-starrating';
 })
 export class AddMovieComponent implements OnInit, OnDestroy {
   checkoutForm: FormGroup;
-  subsriptions: Subscription[];
+  subsriptions: Subscription[] = [];
 
   constructor(private movieService: MovieServiceService) { }
 
   ngOnInit() {
     this.checkoutForm = new FormGroup({
       id: new FormControl(0),
-      name: new FormControl(null, Validators.required)
+      name: new FormControl(null, Validators.required),
+      rating: new FormControl(3, Validators.required)
     });
+
     this.subsriptions.push(this.movieService.movieSelected$.subscribe(movie => {
       if (movie) {
         this.checkoutForm.patchValue({
           id: movie.id,
-          name: movie.name
+          name: movie.name,
+          rating: movie.rating
         });
       }
     }));
   }
 
-  
-  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-    alert(`Old Value:${$event.oldValue}, 
-      New Value: ${$event.newValue}, 
-      Checked Color: ${$event.starRating.checkedcolor}, 
-      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
-  }
-  
   onSubmit(movieData: MovieModel) {
     console.log('movieData', movieData);
     if (movieData.id === 0) {

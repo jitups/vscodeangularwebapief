@@ -15,6 +15,7 @@
     <tr *ngFor="let movie of movies" (click)="displayRow(movie)" >
       <td>{{ movie.id }}</td>
       <td>{{ movie.name }}</td>
+      <td><ngb-rating formControlName="rating" [max]="5"  [readonly]="true" [(rate)]="movie.rating"></ngb-rating></td>
     </tr>
   </tbody>
 </table>

@@ -14,7 +14,7 @@ import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { MovieServiceService } from './services/movie-service.service';
 import { AddMovieComponent } from './fetch-data/add-movie/add-movie.component';
-import { RatingModule } from 'ng-starrating';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { RatingModule } from 'ng-starrating';
     CounterComponent,
     FetchDataComponent,
     AddMovieComponent,
-    RatingModule
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,6 +32,7 @@ import { RatingModule } from 'ng-starrating';
     FormsModule,
     ApiAuthorizationModule,
     ReactiveFormsModule,
+    NgbModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
