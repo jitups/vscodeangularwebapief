@@ -6,6 +6,7 @@
         </label>
         <input class="form-control" id="name" type="text" formControlName="name"/>
         <input class="form-control" id="id" type="hidden" formControlName="id"/>
+        <star-rating value="5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
       </div>
       
     <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">Add</button>

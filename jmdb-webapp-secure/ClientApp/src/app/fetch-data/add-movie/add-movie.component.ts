@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { MovieModel } from 'src/app/models/movie-model';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { Subscription } from 'rxjs';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-add-movie',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class AddMovieComponent implements OnInit, OnDestroy {
   checkoutForm: FormGroup;
-  subsription: Subscription;
+  subsriptions: Subscription[];
 
   constructor(private movieService: MovieServiceService) { }
 
@@ -20,35 +21,46 @@ export class AddMovieComponent implements OnInit, OnDestroy {
       id: new FormControl(0),
       name: new FormControl(null, Validators.required)
     });
-    this.subsription = this.movieService.movieSelected$.subscribe(movie => {
+    this.subsriptions.push(this.movieService.movieSelected$.subscribe(movie => {
       if (movie) {
         this.checkoutForm.patchValue({
           id: movie.id,
           name: movie.name
         });
       }
-    });
+    }));
   }
 
+  
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+    alert(`Old Value:${$event.oldValue}, 
+      New Value: ${$event.newValue}, 
+      Checked Color: ${$event.starRating.checkedcolor}, 
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+  }
+  
   onSubmit(movieData: MovieModel) {
     console.log('movieData', movieData);
-    if(movieData.id===0){
-      this.movieService.addMovie(movieData).subscribe(movie => {
+    if (movieData.id === 0) {
+      this.subsriptions.push(this.movieService.addMovie(movieData).subscribe(movie => {
         console.log('Added movie: ', movie);
         this.movieService.movieListUpdated$.next(true);
-      });
+      }));
     }
-    else{
-      this.movieService.updateMovie(movieData).subscribe(movie => {
+    else {
+      this.subsriptions.push(this.movieService.updateMovie(movieData).subscribe(movie => {
         console.log('updated movie: ', movie);
         this.movieService.movieListUpdated$.next(true);
-      });
+      }));
     }
-    
+
     this.checkoutForm.reset()
   }
 
   ngOnDestroy() {
-    this.subsription.unsubscribe();
+    this.subsriptions.forEach(subscription =>
+      subscription.unsubscribe()
+    );
+
   }
 }
