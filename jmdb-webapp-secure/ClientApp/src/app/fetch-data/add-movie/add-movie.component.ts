@@ -16,12 +16,7 @@ export class AddMovieComponent implements OnInit, OnDestroy {
   constructor(private movieService: MovieServiceService) { }
 
   ngOnInit() {
-    this.checkoutForm = new FormGroup({
-      id: new FormControl(0),
-      name: new FormControl(null, Validators.required),
-      rating: new FormControl(3, Validators.required)
-    });
-
+    this.clearForm();
     this.subsriptions.push(this.movieService.movieSelected$.subscribe(movie => {
       if (movie) {
         this.checkoutForm.patchValue({
@@ -48,7 +43,16 @@ export class AddMovieComponent implements OnInit, OnDestroy {
       }));
     }
 
-    this.checkoutForm.reset()
+    this.clearForm();
+  }
+
+  clearForm(){
+    this.checkoutForm = new FormGroup({
+      id: new FormControl(0),
+      name: new FormControl(null, Validators.required),
+      rating: new FormControl(3, Validators.required)
+    });
+
   }
 
   ngOnDestroy() {

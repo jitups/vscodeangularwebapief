@@ -15,6 +15,8 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { MovieServiceService } from './services/movie-service.service';
 import { AddMovieComponent } from './fetch-data/add-movie/add-movie.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GridModule } from '@progress/kendo-angular-grid'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CounterComponent,
     FetchDataComponent,
     AddMovieComponent,
-    
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,14 +35,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ApiAuthorizationModule,
     ReactiveFormsModule,
     NgbModule,
+    GridModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },MovieServiceService
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }, MovieServiceService
   ],
   bootstrap: [AppComponent]
 })

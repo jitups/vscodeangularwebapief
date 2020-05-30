@@ -1,23 +1,14 @@
 <h1 id="tableLabel">Movies</h1>
-
-<p>Trending movies...</p>
-
-<p *ngIf="!movies"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="movies">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Movie Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let movie of movies" (click)="displayRow(movie)" >
-      <td>{{ movie.id }}</td>
-      <td>{{ movie.name }}</td>
-      <td><ngb-rating formControlName="rating" [max]="5"  [readonly]="true" [(rate)]="movie.rating"></ngb-rating></td>
-    </tr>
-  </tbody>
-</table>
-<hr/>
+<kendo-grid [data]="movies" [height]="410" (cellClick)="onCellClick($event)">
+  <kendo-grid-column field="id" title="ID" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="Name" width="250">
+  </kendo-grid-column>
+  <kendo-grid-column field="rating" title="Rating" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <ngb-rating [max]="5" [readonly]="true" [(rate)]="dataItem.rating"></ngb-rating>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
+<hr />
 <app-add-movie></app-add-movie>
