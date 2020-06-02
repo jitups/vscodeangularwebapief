@@ -19,6 +19,7 @@ namespace jmdb_data.Repository
         }
         public async Task<TEntity> Add(TEntity entity)
         {
+            entity.LastUpdateDate = DateTime.Now;
             context.Set<TEntity>().Add(entity);
             await context.SaveChangesAsync();
             return entity;
@@ -48,7 +49,7 @@ namespace jmdb_data.Repository
             return await context.Set<TEntity>().ToListAsync();
         }
 
-        
+
         public async Task<IEnumerable<TEntity>> GetByCondition(Expression<Func<TEntity, bool>> expression)
         {
             return await context.Set<TEntity>().Where(expression).ToListAsync();
@@ -56,6 +57,7 @@ namespace jmdb_data.Repository
 
         public async Task<TEntity> Update(TEntity entity)
         {
+            entity.LastUpdateDate = DateTime.Now;
             context.Set<TEntity>().Update(entity);
             await context.SaveChangesAsync();
             return entity;

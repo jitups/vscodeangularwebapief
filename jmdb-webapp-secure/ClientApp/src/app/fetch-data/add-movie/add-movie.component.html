@@ -7,6 +7,8 @@
     <input class="form-control" id="name" type="text" formControlName="name" />
     <input class="form-control" id="id" type="hidden" formControlName="id" />
     <ngb-rating formControlName="rating" [max]="5"></ngb-rating>
+    <textarea id="description" rows="5" formControlName="description"
+      class="form-control"></textarea>
   </div>
 
   <button class="btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">Add</button>

@@ -22,7 +22,8 @@ export class AddMovieComponent implements OnInit, OnDestroy {
         this.checkoutForm.patchValue({
           id: movie.id,
           name: movie.name,
-          rating: movie.rating
+          rating: movie.rating,
+          description: movie.description
         });
       }
     }));
@@ -46,11 +47,12 @@ export class AddMovieComponent implements OnInit, OnDestroy {
     this.clearForm();
   }
 
-  clearForm(){
+  clearForm() {
     this.checkoutForm = new FormGroup({
       id: new FormControl(0),
       name: new FormControl(null, Validators.required),
-      rating: new FormControl(3, Validators.required)
+      rating: new FormControl(3, Validators.required),
+      description: new FormControl(null, Validators.required),
     });
 
   }
