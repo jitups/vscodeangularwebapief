@@ -17,6 +17,8 @@ git config --global user.name "jitups"
 
 git config --global user.password "XXXXX"
 
+git remote add origin https://github.com/jitups/vscodeangularwebapief.git
+
 git remote set-url origin https://github.com/jitups/vscodeangularwebapief.git
 
 git push -f origin master
